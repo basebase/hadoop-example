@@ -8,7 +8,7 @@ import java.io.IOException;
 
 /**
  * 最高分数Reducer类
- *      Reducer的KEYIN和VALUEIN就是我们Mapper类的输出类型
+ *      Reducer的KEYIN和VALUEIN就是我们Mapper类的输出类型, 所以必须和Mapper类的输出类型一致
  *      后面两个类型则是Reducer类型自己要输出的KEY和VALUE
  */
 public class MaxScoreReducer extends Reducer<Text, IntWritable, Text, IntWritable> {

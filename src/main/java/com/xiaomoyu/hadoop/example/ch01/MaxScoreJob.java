@@ -32,7 +32,7 @@ public class MaxScoreJob {
         Configuration conf = new Configuration();
         Job job = Job.getInstance(conf);        // 创建job实例
 
-        job.setJarByClass(MaxScoreJob.class);       // 设置jar的类
+        job.setJarByClass(MaxScoreJob.class);
         job.setJobName("Max Score Job");            // 设置任务名称
 
         FileInputFormat.addInputPath(job, new Path(args[0]));       // 被处理数据路径
@@ -40,6 +40,16 @@ public class MaxScoreJob {
 
         job.setMapperClass(MaxScoreMapper.class);               //  设置我们自定义的Mapper类
         job.setReducerClass(MaxScoreReducer.class);             // 设置Reducer类
+
+        /***
+         *
+         *
+         *     如果mapper和reducer的输出相同可以不用设置(本例中Mapper和Reducer输出都是相同的Text, IntWritable),
+         *     但如果不相同就需要设置map函数输出类型
+         *          job.setMapOutputKeyClass();
+         *          job.setMapOutputValueClass();
+         */
+
 
         job.setOutputKeyClass(Text.class);                  // 设置输出KEY类型, 即Reducer类的输出KEY类型
         job.setOutputValueClass(IntWritable.class);         // 设置输出VALUE类型, 即Reducer类的输出VALUE类型
