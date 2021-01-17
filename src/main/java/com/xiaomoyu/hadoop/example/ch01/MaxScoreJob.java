@@ -13,7 +13,7 @@ import java.io.File;
 public class MaxScoreJob {
     public static void main(String[] args) throws Exception {
 
-/*
+
         // 当不想手动输入时解开注释即可, 用于测试
 
         File file = new File("src/main/resources/ch-01/in.csv");
@@ -22,7 +22,7 @@ public class MaxScoreJob {
 
         args = new String[]{inPath, outPath};
 
-*/
+
 
         if (args.length != 2) {
             System.err.println("Usage: MaxScoreJob <input path> <output path>");
@@ -39,6 +39,7 @@ public class MaxScoreJob {
         FileOutputFormat.setOutputPath(job, new Path(args[1]));     // 处理后结果输出路径
 
         job.setMapperClass(MaxScoreMapper.class);               //  设置我们自定义的Mapper类
+        job.setCombinerClass(MaxScoreReducer.class);            // 设置combiner函数减少数据传输
         job.setReducerClass(MaxScoreReducer.class);             // 设置Reducer类
 
         /***
