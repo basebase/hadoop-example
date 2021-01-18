@@ -7,6 +7,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 
+/***
+ *      第一个例子, 使用URL读取Hadoop文件数据
+ */
+
 public class HDFSURLCat {
 
     /***
