@@ -9,6 +9,20 @@ import java.net.URL;
 
 public class HDFSURLCat {
 
+    /***
+     *
+     *      想要从Hadoop文件系统中读取文件, 最简单的方法就是使用URL对象打开数据流
+     *      从中读取数据, 具体格式如下:
+     *
+     *      InputStream in = null;
+     *      in = new URL("hdfs://ip:port/path").openStream();
+     *      IOUtils.closeStream(in)
+     *
+     *      但是想让Java程序能够识别Hadoop的HDFS URL方案还需要额外的工作, 这里采用:
+     *      FsUrlStreamHandlerFactory实例调用URL对象的setURLStreamHandlerFactory()方法
+     *
+     */
+
     static {
         /**
          *      每个JVM虚拟机只能调用一次该方法, 因此通常在静态方法中调用
